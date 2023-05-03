@@ -11,7 +11,7 @@
 | first_name         | string | null: false               |
 | family_name_kana   | string | null: false               |
 | first_name_kana    | string | null: false               |
-| date               | string | null: false               |
+| birthday           | string | null: false               |
 
 
 
@@ -30,8 +30,8 @@
 | explanation            | text       | null: false                    |(商品の説明)
 | category_id            | integer    | null: false                    |
 | commodity_condition_id | integer    | null: false                    |(状態)
-| shipping_charges_id    | integer    | null: false                    |(送料負担)
-| shipping_origins_id    | integer    | null: false                    |(配送元)
+| shipping_charge_id     | integer    | null: false                    |(送料負担)
+| prefecture_id          | integer    | null: false                    |(配送元/都道府県)
 | delivery_date_id       | integer    | null: false                    |(配送までの日数)
 | price                  | integer    | null: false                    |(価格)
 | user                   | references | null: false, foreign_key: true |
@@ -66,7 +66,7 @@
 | prefecture_id    | integer    | null: false                    |(都道府県)
 | city             | string     | null: false                    |(市町村)
 | address          | string     | null: false                    |(番地)
-| building_name    | text       |                                |(建物名)
+| building_name    | string     |                                |(建物名)
 | telephone_number | string     | null: false                    |(電話番号)
 | purchase         | references | null: false, foreign_key: true |
 
