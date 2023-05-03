@@ -6,12 +6,14 @@
 | ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
-| encryptedPassword  | string | null: false               |
-| familyName         | string | null: false               |
-| firstName          | string | null: false               |
-| familyNameKana     | string | null: false               |
-| firstNameKana      | string | null: false               |
-| dateOfBirth        | string | null: false               |
+| encrypted_password | string | null: false               |
+| family_name        | string | null: false               |
+| first_name         | string | null: false               |
+| family_name_kana   | string | null: false               |
+| first_name_kana    | string | null: false               |
+| date_year          | string | null: false               |
+| date_month         | string | null: false               |
+| date_day           | string | null: false               |
 
 
 ### Association
@@ -23,19 +25,17 @@
 
 ## items テーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| image              | string     | null: false                    |
-| productName        | string     | null: false                    |(商品名)
-| explanation        | text       | null: false                    |(商品の説明)
-| category           | string     | null: false                    |
-| commodityCondition | text       | null: false                    |(状態)
-| shippingCharges    | string     | null: false                    |(送料負担)
-| shippingOrigins    | string     | null: false                    |(配送元)
-| deliveryDate       | string     | null: false                    |(配送までの日数)
-| price              | string     | null: false                    |(価格)
-| seller_user        | references | null: false, foreign_key: true |(出品者)
-| user               | references | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| product_name        | string     | null: false                    |(商品名)
+| explanation         | text       | null: false                    |(商品の説明)
+| category            | integer    | null: false                    |
+| commodity_condition | integer    | null: false                    |(状態)
+| shipping_charges    | integer    | null: false                    |(送料負担)
+| shipping_origins    | integer    | null: false                    |(配送元)
+| delivery_date       | integer    | null: false                    |(配送までの日数)
+| price               | integer    | null: false                    |(価格)
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -48,7 +48,6 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| buyer_user | references | null: false, foreign_key: true |(購入者)
 | user       | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
 
@@ -61,14 +60,14 @@
 
 ## deliveries テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| postCode        | string | null: false |(郵便番号)
-| prefectures     | string | null: false |(都道府県)
-| city            | string | null: false |(市町村)
-| address         | string | null: false |(番地)
-| buildingName    | text   | null: false |(建物名)
-| telephoneNumber | string | null: false |(電話番号)
+| Column           | Type    | Options     |
+| ---------------- | ------- | ----------- |
+| post_code        | string  | null: false |(郵便番号)
+| prefecture       | integer | null: false |(都道府県)
+| city             | string  | null: false |(市町村)
+| address          | string  | null: false |(番地)
+| building_name    | text    |             |(建物名)
+| telephone_number | string  | null: false |(電話番号)
 
 ### Association
 
