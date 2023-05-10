@@ -4,7 +4,7 @@ RSpec.describe Item, type: :model do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
-      @item.image = fixture_file_upload("/test_image.png")
+      #@item.image = fixture_file_upload("/test_image.png")
     end
 
     context '商品出品できるとき' do
@@ -29,30 +29,30 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
-      it 'category_idが入力されないと登録できないこと' do
-        @item.category_id = nil
+      it 'category_idは1を選択したら保存できないこと' do
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
-      it 'commodity_condition_idが空では登録できないこと' do
-        @item.commodity_condition_id = nil
+      it 'commodity_condition_idは1を選択したら保存できないこと' do
+        @item.commodity_condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Commodity condition can't be blank")
+        expect(@item.errors.full_messages).to include("Commodity condition must be other than 1")
       end
-      it 'shipping_charge_idが空では登録できないこと' do
-        @item.shipping_charge_id = nil
+      it 'shipping_charge_idは1を選択したら保存できないこと' do
+        @item.shipping_charge_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
       end
-      it 'prefecture_idが空では登録できないこと' do
-        @item.prefecture_id = nil
+      it 'prefecture_idは1を選択したら保存できないこと' do
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
-      it 'delivery_date_idが空では登録できないこと' do
-        @item.delivery_date_id = nil
+      it 'delivery_date_idは1を選択したら保存できないこと' do
+        @item.delivery_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery date can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery date must be other than 1")
       end
       it 'priceが空では登録できないこと' do
         @item.price = nil
