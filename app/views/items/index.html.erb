@@ -128,27 +128,27 @@
     </div>
     <ul class='item-lists'>
 
-    <% if @items.present? %>
-      <% @items.each do |item| %>
+    <%# if @items.present? %>
+      <%# @items.each do |item| %>
         <li class='list'>
-          <%= link_to items_path(item) do %>
+          <%= link_to "#" do %>
           <div class='item-img-content'>
             <%= image_tag "item-sample.png", class: "item-img" %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
-            <% if item.user_id.present? %>
+            <%# if item.user_id.present? %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
-            <% end %>
+            <%# end %>
             <%# //商品が売れていればsold outを表示しましょう %>
           </div>
           <div class='item-info'>
             <h3 class='item-name'>
-              <%= item.product_name %>
+              <%= "商品名" %>
             </h3>
             <div class='item-price'>
-              <span><%= item.price %>円<br><%= ShippingCharge.find(item.shipping_charge_id).name %></span>
+              <span><%= "販売価格" %>円<br><%= "配送料負担" %></span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
@@ -157,12 +157,12 @@
           </div>
           <% end %>
         </li>
-      <% end %>
-    <% else %>
+      <%# end %>
+    <%# else %>
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
-        <%= link_to root_path do %>
+        <%= link_to "#" do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -180,7 +180,7 @@
       </li>
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-    <% end %>
+    <%# end %>
     </ul>
   </div>
   <%# /商品一覧 %>

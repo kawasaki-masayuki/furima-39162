@@ -1,6 +1,12 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
-  has_one    :purchase
+  belongs_to :category
+  belongs_to :commodity_condition
+  belongs_to :shipping_charge
+  belongs_to :prefecture
+  belongs_to :delivery_date
+  #has_one    :purchase
   has_one_attached :image
 
   validates :product_name,           presence: true
@@ -11,28 +17,6 @@ class Item < ApplicationRecord
   validates :delivery_date_id,       presence: true, numericality: { other_than: 1 }
   validates :explanation,            presence: true
   validates :price,                  presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  #validates :image, presence: true, attached: true, content_type: { in: ['image/jpeg', 'image/png'], message: 'should be a JPEG or PNG file' }
-  #validates :image,                  presence: true
-  #validate  :validate_image_format
-
-  #private
-
-  #def validate_image_format
-  
-    #return unless image.attached?
-
-    #unless image.blob.content_type.in?(%w[image/jpeg image/png])
-      #errors.add(:image, "should be a JPEG or PNG file")
-    #end
-  #end
   validates :image, presence: true
-  #validate :image_format_validation
-
-  #private
-
-  #def image_format_validation
-    #if image.attached? && !image.blob.content_type.in?(%w[image/jpeg image/png])
-      #errors.add(:image, "should be a JPEG or PNG file")
-    #end
-  #end
+  
 end
