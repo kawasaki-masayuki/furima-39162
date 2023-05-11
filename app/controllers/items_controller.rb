@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
 
   def index
-    #@items = Item.all ← 商品一覧表示機能で実装
+    @items = Item.order(created_at: :desc)
   end
 
   def new
