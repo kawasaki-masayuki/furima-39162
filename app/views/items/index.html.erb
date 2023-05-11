@@ -131,7 +131,7 @@
     <% if @items.present? %>
       <% @items.each do |item| %>
         <li class='list'>
-          <%= link_to items_path(item) do %>
+          <%= link_to "#" do %> <%#= link_to items_path(item) do ←今後の実装要件で使用 %>
           <div class='item-img-content'>
             <%= image_tag item.image,  class: "item-img" %>
 
@@ -159,8 +159,6 @@
         </li>
       <% end %>
     <% else %>
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
         <%= link_to root_path do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -178,8 +176,6 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     <% end %>
     </ul>
   </div>
