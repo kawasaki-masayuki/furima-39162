@@ -4,7 +4,6 @@ RSpec.describe Item, type: :model do
   describe '#create' do
     before do
       @item = FactoryBot.build(:item)
-      #@item.image = fixture_file_upload("/test_image.png")
     end
 
     context '商品出品できるとき' do
