@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :set_item, only: [:show, :edit, :update]
+    before_action :contributor_confirmation, only: [:edit, :update]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -19,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     #↓購入機能時に実装する↓
     #if @item.purchased?
       #@sold_out = true
@@ -31,24 +32,29 @@ class ItemsController < ApplicationController
     #↑購入機能時に実装する↑
   end
 
-  #↓編集機能時に実装する↓
-  #def edit
-    #@item = Item.find(params[:id])
-  #end
+  def edit
 
-  #def update
-    #item = Item.find(params[:id])
-    #item.update(item_params)
-  #end
-  #↑編集機能時に実装する↑
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
 
   private
   def item_params
     params.require(:item).permit(:image, :product_name, :explanation, :category_id, :commodity_condition_id, :shipping_charge_id, :prefecture_id, :delivery_date_id, :price).merge(user_id: current_user.id)
   end
 
-  #def contributor_confirmation
-    #redirect_to root_path unless current_user == @item.user
-  #end
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
