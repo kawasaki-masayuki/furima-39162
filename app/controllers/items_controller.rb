@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-    before_action :authenticate_user!, except: [:index, :show, :edit]
+    before_action :authenticate_user!, except: [:index, :show]
     before_action :contributor_confirmation, only: [:edit, :update]
+    before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -20,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     #↓購入機能時に実装する↓
     #if @item.purchased?
       #@sold_out = true
@@ -33,11 +33,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
@@ -53,6 +52,10 @@ class ItemsController < ApplicationController
   def contributor_confirmation
     @item = Item.find(params[:id])
     redirect_to root_path unless current_user == @item.user
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
