@@ -13,7 +13,7 @@
       <%#<div class="sold-out">
         <span>Sold Out!!</span>
       </div>
-      <%# //商品が売れている場合は、sold outを表示しましょう %>
+      <%# //商品が売れている場合は、sold outを表示しましょう ←購入機能時に行う %>
     </div>
     <div class="item-price-box">
       <span class="item-price">
@@ -100,9 +100,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%= Category.find(@item.category_id).name %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
