@@ -21,19 +21,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    #↓購入機能時に実装する↓
-    #if @item.purchased?
-      #@sold_out = true
-    #elsif @user_signed_in && @item.user == @current_user
-      #@is_owner = true
-    #else
-      #@is_owner = false
-    #end
-    #↑購入機能時に実装する↑
+
   end
 
   def edit
-
+    if @item.user == current_user && !@item.purchase
+      render :edit
+    else
+      redirect_to root_path
+    end
   end
 
   def update
