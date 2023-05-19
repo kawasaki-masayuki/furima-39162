@@ -9,10 +9,6 @@ class Item < ApplicationRecord
   has_one    :purchase
   has_one_attached :image
 
-  # def purchased?
-  #   purchases.exists?
-  # end
-
   validates :product_name,           presence: true
   validates :category_id,            presence: true, numericality: { other_than: 1 }
   validates :commodity_condition_id, presence: true, numericality: { other_than: 1 }

@@ -2,11 +2,7 @@ FactoryBot.define do
   factory :purchase_delivery do
     user_id                 { FactoryBot.create(:user) }
     item_id                 { FactoryBot.create(:item) }
-    #card_information       {4242424242424242}
-    #month                  {12}
-    #year                   {24}
-    #security_code          {123}
-    #token                  { "tok_abcdefghijk00000000000000000" }
+    token                  { "tok_abcdefghijk00000000000000000" }
     post_code              { "#{Faker::Number.number(digits: 3)}-#{Faker::Number.number(digits: 4)}" }
     prefecture_id          { Faker::Number.between(from: 2, to: 48) }
     city                   { Faker::Address.city }

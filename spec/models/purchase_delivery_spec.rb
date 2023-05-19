@@ -16,11 +16,11 @@ RSpec.describe PurchaseDelivery, type: :model do
     end
 
     context '内容に問題がある場合' do
-      # it "tokenが空では登録できないこと" do
-      #   @purchase_delivery.token = nil
-      #   @purchase_delivery.valid?
-      #   expect(@purchase_delivery.errors.full_messages).to include("Token can't be blank")
-      # end
+      it "tokenが空では登録できないこと" do
+        @purchase_delivery.token = nil
+        @purchase_delivery.valid?
+        expect(@purchase_delivery.errors.full_messages).to include("Token can't be blank")
+      end
       it 'post_codeが空では登録できないこと' do
         @purchase_delivery.post_code = ""
         @purchase_delivery.valid?
@@ -66,7 +66,6 @@ RSpec.describe PurchaseDelivery, type: :model do
         @purchase_delivery.valid?
         expect(@purchase_delivery.errors.full_messages).to include("Telephone number is invalid")
       end
-      
       it 'userが紐付いていないと保存できないこと' do
         @purchase_delivery.user_id = nil
         @purchase_delivery.valid?
