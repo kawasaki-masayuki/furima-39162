@@ -8,11 +8,11 @@ class User < ApplicationRecord
   has_many :purchases
 
   validates :nickname,         presence: true
-  validates :password,         format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'is invalid. Include both letters and numbers' }
-  validates :family_name,      presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'Input full-width characters.' }
-  validates :first_name,       presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'Input full-width characters.' }
-  validates :family_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Input full-width katakana characters' }
-  validates :first_name_kana,  presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Input full-width katakana characters' }
+  validates :password,         format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'が無効です。 文字と数字の両方を含める' }
+  validates :family_name,      presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は全角文字を入力してください' }
+  validates :first_name,       presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は全角文字を入力してください' }
+  validates :family_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カタカナを入力してください' }
+  validates :first_name_kana,  presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: '全角カタカナを入力してください' }
   validates :birthday,         presence: true
 
 end
