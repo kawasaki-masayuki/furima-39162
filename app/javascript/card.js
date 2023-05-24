@@ -1,4 +1,9 @@
 const pay = () => {
+  if (!document.getElementById("number-form")) {
+    // 商品購入ページでない場合の処理
+    return;
+  }
+
   const payjp = Payjp(process.env.PAYJP_PUBLIC_KEY);
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
@@ -7,7 +12,6 @@ const pay = () => {
 
   numberElement.mount('#number-form');
   expiryElement.mount('#expiry-form');
-  // expiryElement.mount('#card-exp-year');
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");

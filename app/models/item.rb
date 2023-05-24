@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :delivery_date
   has_one    :purchase
   has_one_attached :image
+  has_many :comments
 
   validates :product_name,           presence: true
   validates :category_id,            presence: true, numericality: { other_than: 1 }

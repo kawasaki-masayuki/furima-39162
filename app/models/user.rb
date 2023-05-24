@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :purchases
+  has_many :comments
 
   validates :nickname,         presence: true
   validates :password,         format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'が無効です。 文字と数字の両方を含める' }
